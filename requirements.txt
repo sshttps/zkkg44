@@ -2,3 +2,5 @@ python-telegram-bot
 pillow
 twilio
 pytz
+flask
+gunicorn
