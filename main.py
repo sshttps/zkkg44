@@ -5,6 +5,22 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 from PIL import Image, ImageDraw, ImageFont
 from datetime import datetime
 import pytz
+from flask import Flask
+from threading import Thread
+
+# Configuración básica del servidor Flask
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "¡El bot está corriendo correctamente!"
+
+def run_server():
+    port = int(os.environ.get("PORT", 5000))  # Render asigna dinámicamente este puerto
+    app.run(host="0.0.0.0", port=port)
+
+# Ejecutar Flask en un hilo secundario
+Thread(target=run_server).start()
 
 # Configuración de logging
 logging.basicConfig(
